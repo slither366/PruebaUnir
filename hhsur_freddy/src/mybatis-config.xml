@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <settings>
+        <setting name="jdbcTypeForNull" value="NULL"/>
+    </settings>
+    <environments default="xe">
+        <environment id="xe">
+            <transactionManager type="JDBC"/>
+            <dataSource type="UNPOOLED">
+                <property name="driver" value="${jdbc.driverClassName}"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
+                <!--<property name="poolMaximumActiveConnections" value="1"/>-->
+                <!--DEFAULT 10 -->
+            </dataSource>
+        </environment>
+        <environment id="fasa">
+            <transactionManager type="JDBC"/>
+            <dataSource type="UNPOOLED">
+                <property name="driver" value="${jdbcFasa.driverClassName}"/>
+                <property name="url" value="${jdbcFasa.url}"/>
+                <property name="username" value="${jdbcFasa.username}"/>
+                <property name="password" value="${jdbcFasa.password}"/>
+            </dataSource>
+        </environment>
+        <environment id="adm">
+            <transactionManager type="JDBC"/>
+            <dataSource type="UNPOOLED">
+                <property name="driver" value="${jdbcApps.driverClassName}"/>
+                <property name="url" value="${jdbcApps.url}"/>
+                <property name="username" value="${jdbcApps.username}"/>
+                <property name="password" value="${jdbcApps.password}"/>
+            </dataSource>
+        </environment>
+        <environment id="rac">
+            <transactionManager type="JDBC"/>
+            <dataSource type="UNPOOLED">
+                <property name="driver" value="${jdbcRAC.driverClassName}"/>
+                <property name="url" value="${jdbcRAC.url}"/>
+                <property name="username" value="${jdbcRAC.username}"/>
+                <property name="password" value="${jdbcRAC.password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+    <mapper class="venta.ce.dao.MapperCajaElectronica"/>
+    <mapper class="venta.recaudacion.dao.MapperRecaudacion"/> 
+    <mapper class="venta.recaudacion.dao.MapperRecaudacionTrsscSix"/> 
+    <mapper class="venta.recetario.dao.MapperRecetario"/>
+    <mapper class="venta.inventario.dao.MapperInventario"/>
+    <mapper class="venta.caja.dao.MapperCaja"/>
+    <mapper class="venta.psicotropicos.dao.MapperPsicotropicos"/>
+    <mapper class="venta.administracion.producto.dao.MapperProducto"/>
+    <mapper class="venta.stocknegativo.dao.MapperStockNegativo"/>
+    <mapper class="venta.convenioBTLMF.dao.MapperConvenioBTLMF"/>
+    <mapper resource="mifarma/ptoventa/reference/MapperResultado.xml"/>
+    <mapper class="mifarma.ptoventa.centromedico.dao.MapperVentaAtencionMedica"/>
+    <mapper class="mifarma.ptoventa.centromedico.dao.MapperAtencionMedica"/>
+    </mappers>
+</configuration>
